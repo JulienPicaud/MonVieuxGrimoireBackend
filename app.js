@@ -15,6 +15,31 @@ mongoose.connect('mongodb+srv://piko83:Job-456@monvieuxgrimoire.usck1ea.mongodb.
 
 app.use(express.json());
 
+// Express rate limit
+//const rateLimit = require('express-rate-limit')
+//
+//const limiter = rateLimit({
+//	windowMs: 15 * 60 * 1000, // 15 minutes
+//	limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+//	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+//	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+//	// store: ... , // Redis, Memcached, etc. See below.
+//})
+
+//const helmet = require('helmet');
+//
+//// Use Helmet!
+//app.use(helmet());
+//
+//app.get("/", (req, res) => {
+//  res.send("Hello world!");
+//});
+//
+//app.listen(4000);
+//
+//// Apply the rate limiting middleware to all requests.
+//app.use(limiter)
+
   //ALLOW CORS
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

@@ -12,7 +12,7 @@ exports.createBook = (req, res, next) => {
   const book = new Book({
       ...bookObject,
       userId: req.auth.userId,
-      imageUrl: `${req.protocol}://${req.get('host')}/images/resized_${req.file.filename}`,
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
       averageRating: bookObject.ratings[0].grade
   });
   // Enregistrement dans la base de données
@@ -33,9 +33,16 @@ exports.modifyBook = (req, res, next) => {
           if (book.userId != req.auth.userId) {
               res.status(401).json({ message : 'Not authorized'});
           } else {
+                            // Séparation du nom du fichier image existant
+                            const filename = book.imageUrl.split('/images/')[1];
+                            // Si l'image a été modifiée, on supprime l'ancienne
+                            req.file && fs.unlink(`images/${filename}`, (err => {
+                                    if (err) console.log(err);
+                            }));
               Book.updateOne({ _id: req.params.id}, { ...bookObject, _id: req.params.id})
               .then(() => res.status(200).json({message : 'Objet modifié!'}))
               .catch(error => res.status(401).json({ error }));
+              
           }
       })
       .catch((error) => {
