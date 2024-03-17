@@ -4,7 +4,7 @@ const app = express();
 const userRoutes = require('./routes/User');
 const path = require('path');
 
-const stuffRoutes = require('./routes/stuff')
+const booksRoutes = require('./routes/book')
 const dotenv = require('dotenv').config()
 
 //Connexion BDD
@@ -49,7 +49,7 @@ app.use(limiter)
 // Gestion de la ressource images de manière statique
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use('/api/books', stuffRoutes);
+app.use('/api/books', booksRoutes);
 app.use('/api/auth', userRoutes);
 
 
