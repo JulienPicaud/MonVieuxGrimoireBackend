@@ -3,9 +3,8 @@ const mongoose = require('mongoose');
 const app = express();
 const userRoutes = require('./routes/User');
 const path = require('path');
-
-const booksRoutes = require('./routes/book')
-const dotenv = require('dotenv').config()
+const booksRoutes = require('./routes/book');
+require('dotenv').config()
 
 //Connexion BDD
 mongoose.connect(`mongodb+srv://${process.env.LOGIN_MONGO}:${process.env.PASSWORD_MONGO}@monvieuxgrimoire.usck1ea.mongodb.net/?retryWrites=true&w=majority`,
