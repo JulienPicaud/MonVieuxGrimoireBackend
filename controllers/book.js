@@ -88,7 +88,6 @@ exports.deleteBook = (req, res, next) => {
   }
 
   exports.getBestRatedBooks = (req, res, next) => {
-    console.log('cc')
     Book.find()
       .sort({ averageRating: -1 })
       .limit(3)
@@ -102,39 +101,6 @@ exports.deleteBook = (req, res, next) => {
   
 
 
- //exports.addBookRating = async (req, res, next) => {
- //  // Check that the user has not already rated the book
- //  const existingRating = await Book.findOne({
- //   _id: req.params.id,
- //   "ratings.userId": req.body.userId
- // })
- // if (existingRating) {
- //   return res.status(400).json({ message: 'User has already rated this book' })
- // }
- //
- // // Check that the rating is a number between 0..5 included
- // if(!(req.body.rating  >= 0) && !(req.body.rating  <= 5) && (typeof req.body.rating === 'number')){
- //   return res.status(500).json({ message: 'Grade is not between 0 and 5 included or is not a number' })
- // }
- //
- // try {
- //   // Retrieves the book to rate according to the id of the request
- //   const book = await Book.findOne({ _id: req.params.id })
- //   if (!book) {
- //     return res.status(404).json({ message: 'Book not found' })
- //   }
- //
- //   // Add a new rating to the ratings array of the book
- //   book.ratings.push({ userId : req.body.userId, grade: req.body.rating })
- //
- //   // Save the book to MongoDB, averageRating will be up to date on save
- //   await book.save()
- //   res.status(200).json(book)
- // } catch (error) {
- //   console.error(error)
- //   res.status(500).json({ message: 'An error has occurred' })
- // }
- //
  
  exports.addBookRating = (req, res, next) => {
     // Check that the user has not already rated the book
