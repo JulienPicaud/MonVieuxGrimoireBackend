@@ -2,7 +2,7 @@
 
 Projet n°7 de la formation Développeur Web OpenClassrooms
 
-![Banner](/imagesreadme/16654934257102_DW-P7-Back-end_company-banner.png)
+![Banner](/16654934257102_DW-P7-Back-end_company-banner.png)
 
 
 ## Contexte
@@ -19,9 +19,9 @@ Développer le back-end du site
 
 ## Spécifications de l'API
 
-![spec1](/imagesreadme/spec1.png)
+![spec1](/spec1.png)
 
-![spec2](/imagesreadme/spec2.png)
+![spec2](/spec2.png)
 
 
 ## API Errors
